@@ -13,3 +13,9 @@ MonoBehaviour:
   m_Name: Question 1
   m_EditorClassIdentifier: 
   question: "\u201CFriends don\u2019t lie\u201D was first said by which character?"
+  answers:
+  - aaa
+  - bbb
+  - cccc
+  - dddd
+  correctAnswerIndex: 0
