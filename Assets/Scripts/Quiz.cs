@@ -35,7 +35,7 @@ public class Quiz : MonoBehaviour
 		else
 		{
 			string correctAnswer = question.answers[correctAnswerIndex];
-			questionText.text = $"Sorry the correct answer is {correctAnswer}" ;
+			questionText.text = $"Sorry, the correct answer was;\n{correctAnswer}" ;
 			Image buttonImage = answerButtons[index].GetComponent<Image>();
 			buttonImage.color = wrongAnswerColor;
 		}
