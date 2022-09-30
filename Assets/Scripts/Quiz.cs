@@ -18,7 +18,7 @@ public class Quiz : MonoBehaviour
 	void Start()
 	{
 		questionText.text = question.GetQuestion();
-
+		correctAnswerIndex = question.GetCorrectAnswerIndex();
 		for(int i = 0; i < answerButtons.Length; i++){
 			TextMeshProUGUI buttonText = answerButtons[i].GetComponentInChildren<TextMeshProUGUI>();
 		  buttonText.text = question.GetAnswer(i);
@@ -27,14 +27,15 @@ public class Quiz : MonoBehaviour
 
 	public void OnAnswerSelected(int index)
 	{
-		if(index == question.GetCorrectAnswerIndex()){
-			questionText.text = "Correct!";
+		if(index == correctAnswerIndex){
+			questionText.text = "Well Done!";
 			Image buttonImage = answerButtons[index].GetComponent<Image>();
 			buttonImage.color = correctAnswerColor;
 		} 
 		else
 		{
-			questionText.text = "Wrong!";
+			string correctAnswer = question.answers[correctAnswerIndex];
+			questionText.text = $"Sorry the correct answer is {correctAnswer}" ;
 			Image buttonImage = answerButtons[index].GetComponent<Image>();
 			buttonImage.color = wrongAnswerColor;
 		}
