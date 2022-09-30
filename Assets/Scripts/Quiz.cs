@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
+using System;
 
 public class Quiz : MonoBehaviour
 {
@@ -13,6 +14,7 @@ public class Quiz : MonoBehaviour
 	[SerializeField] Color32 defaultAnswerColor = new Color32 (1, 1, 1, 1);
 	[SerializeField] Color32 correctAnswerColor = new Color32 (1, 1, 1, 1);
 	[SerializeField] Color32 wrongAnswerColor = new Color32 (1, 1, 1, 1);
+	Image buttonImage;
 
 	// Start is called before the first frame update
 	void Start()
@@ -31,10 +33,19 @@ public class Quiz : MonoBehaviour
 	void getNextQuestion()
 	{
 		SetButtonState(true);
+		SetDefaultColor();
 		DisplayQuestion();	
 	}
 
-	void SetButtonState(bool state)
+  void SetDefaultColor()
+  {
+    for(int i = 0; i < answerButtons.Length; i++){
+			buttonImage = answerButtons[i].GetComponent<Image>();
+			buttonImage.color = defaultAnswerColor;
+		}
+  }
+
+  void SetButtonState(bool state)
 	{
 		for(int i = 0; i < answerButtons.Length; i++){
 			Button button = answerButtons[i].GetComponent<Button>();
@@ -44,7 +55,7 @@ public class Quiz : MonoBehaviour
 
 	public void OnAnswerSelected(int index)
 	{
-		Image buttonImage;
+		
 		questionText.text = question.GetQuestion();
 		correctAnswerIndex = question.GetCorrectAnswerIndex();
 		
