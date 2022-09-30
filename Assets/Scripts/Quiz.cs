@@ -27,16 +27,18 @@ public class Quiz : MonoBehaviour
 
 	public void OnAnswerSelected(int index)
 	{
+		Image buttonImage;
+
 		if(index == correctAnswerIndex){
 			questionText.text = "Well Done!";
-			Image buttonImage = answerButtons[index].GetComponent<Image>();
+			buttonImage = answerButtons[index].GetComponent<Image>();
 			buttonImage.color = correctAnswerColor;
 		} 
 		else
 		{
 			string correctAnswer = question.answers[correctAnswerIndex];
 			questionText.text = $"Sorry, the correct answer was;\n{correctAnswer}" ;
-			Image buttonImage = answerButtons[index].GetComponent<Image>();
+			buttonImage = answerButtons[index].GetComponent<Image>();
 			buttonImage.color = wrongAnswerColor;
 		}
 	}
